@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.SFTPClent" parent="QMUI.Compat">
+        <!-- Primary brand color. -->
+
+    </style>
+    <style name="Theme.SFTPClent.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.SFTPClent.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.SFTPClent.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

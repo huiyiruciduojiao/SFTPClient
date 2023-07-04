@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="Deprecated">
+
+    <TextView
+        android:id="@+id/text_showPath"
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:layout_alignParentTop="true"
+        android:textSize="15dp" />
+    <TextView
+        android:id="@+id/view_show_file_host_not"
+        android:layout_width="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_height="18dp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:text="你还没有主机，请点击右下角的按钮添加一个吧"
+        android:visibility="gone"
+        android:textSize="15dp" />
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/text_showPath"
+        android:background="@color/qmui_config_color_background"
+        android:fadingEdgeLength="16dp"
+        android:requiresFadingEdge="vertical"
+        android:visibility="visible">
+
+        <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
+            android:id="@+id/groupListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true" />
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+
+
+</RelativeLayout>

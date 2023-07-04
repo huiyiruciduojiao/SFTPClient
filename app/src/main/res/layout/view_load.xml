@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    tools:ignore="Deprecated">
+
+    <com.qmuiteam.qmui.widget.QMUILoadingView
+        android:id="@+id/loadingView"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/load_view_title"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+</RelativeLayout>

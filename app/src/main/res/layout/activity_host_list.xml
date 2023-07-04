@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="Deprecated">
+
+    <TextView
+        android:id="@+id/text_host_list_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="主机列表"
+        android:textAlignment="center"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/text_host_list_show_not"
+        android:layout_below="@id/text_host_list_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="\n\n 你还没有主机 \n去添加一个吧\n\n\n"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:textSize="30dp" />
+
+    <ScrollView
+        android:id="@+id/host_list_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/text_host_list_show_not"
+        android:background="@color/qmui_config_color_background"
+        android:fadingEdgeLength="16dp"
+        android:requiresFadingEdge="vertical">
+
+        <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
+            android:id="@+id/host_list_groupListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true" />
+    </ScrollView>
+</RelativeLayout>

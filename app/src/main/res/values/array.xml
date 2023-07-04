@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="characterSet">
+        <item>default</item>
+        <item>UTF-8</item>
+        <item>GBK-2312</item>
+    </string-array>
+</resources>

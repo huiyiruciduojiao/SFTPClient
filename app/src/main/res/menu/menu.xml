@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_reLoad"
+        android:icon="@drawable/ic_refresh"
+        android:title="刷新"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_uploadFile"
+        android:icon="@drawable/ic_upload"
+        android:title="上传文件"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_download"
+        android:icon="@drawable/ic_download"
+        android:title="下载文件"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_delete"
+        android:icon="@drawable/ic_delete"
+        android:title="删除文件"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_rename"
+        android:icon="@drawable/ic_rename"
+        android:title="重命名"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_host_list"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="主机列表"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_sponsor"
+        android:title="支持开发"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_exit"
+        android:title="退出APP"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_setting"
+        android:title="设置"
+        app:showAsAction="never" />
+</menu>

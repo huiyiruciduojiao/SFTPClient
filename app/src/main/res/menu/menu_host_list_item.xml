@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_host_attribute"
+        android:title="主机属性" />
+    <item
+        android:id="@+id/menu_host_del"
+        android:title="删除主机" />
+    <item
+        android:id="@+id/menu_host_edit"
+        android:title="编辑属性" />
+</menu>
