@@ -83,6 +83,7 @@ public class TaskExecutor {
  */
 class TaskExecutorThread implements Runnable {
     private TaskGroup taskGroup;
+
     public TaskExecutorThread(TaskGroup taskGroup) {
 
         this.taskGroup = taskGroup;
@@ -164,7 +165,7 @@ class TaskExecutorThread implements Runnable {
     public OutputStream getOutputStream(TaskConfiguration task) {
         OutputStream outputStream;
 
-        if (!task.lPwd.isEmpty()) {//通过创建uri，使用uri创建文件流
+        if (task.lPwd != null && !task.lPwd.isEmpty()) {//通过创建uri，使用uri创建文件流
             //创建文件保存位置Uri
             Uri uri = Uri.parse(task.lPwd);
             DocumentFile treeDocumentFile = DocumentFile.fromTreeUri(MainActivity.thisMainActivity.getApplicationContext(), uri);

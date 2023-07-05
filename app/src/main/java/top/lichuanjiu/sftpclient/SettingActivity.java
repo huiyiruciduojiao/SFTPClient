@@ -58,7 +58,6 @@ public class SettingActivity extends AppCompatActivity {
      * 将数据库中的数据加载到页面中
      */
     private void loadData() {
-
         SettingConfig.loadSetting(getResources().getStringArray(R.array.characterSet));
         spinnerCharset.setSelection(SettingConfig.charsetIndex);
         editTextSaveLocation.setText(SettingConfig.saveLocation);
@@ -94,6 +93,8 @@ public class SettingActivity extends AppCompatActivity {
             SettingUtils.saveSetting(SettingUtils.getSETTING_KEY()[0], charset);
             SettingUtils.saveSetting(SettingUtils.getSETTING_KEY()[1], saveLocation);
             Toast.makeText(getApplicationContext(), "保存成功", Toast.LENGTH_SHORT).show();
+            //重新加载配置文件，使配置生效
+            loadData();
         });
 
     }

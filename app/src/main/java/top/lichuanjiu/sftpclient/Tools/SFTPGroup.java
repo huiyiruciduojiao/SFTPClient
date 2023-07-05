@@ -85,31 +85,33 @@ public class SFTPGroup implements SFTPOnLoad {
 
     @Override
     public void error(int i, JSchException e) {
-        String errorMessage = e.getMessage();
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (errorMessage.contains("connection timeout")) {
-                    Toast.makeText(MainActivity.thisMainActivity, "连接超时，请检查网络连接或目标主机是否可达。",Toast.LENGTH_SHORT).show();
-                } else if (errorMessage.contains("Auth fail")) {
-                    Toast.makeText(MainActivity.thisMainActivity,"身份验证失败，请检查用户名和密码。",Toast.LENGTH_SHORT).show();
-                } else if (errorMessage.contains("refused")) {
-                    Toast.makeText(MainActivity.thisMainActivity,"连接被拒绝，请检查SSH服务是否正常运行。",Toast.LENGTH_SHORT).show();
-                } else if (errorMessage.contains("UnknownHostException")) {
-                    Toast.makeText(MainActivity.thisMainActivity,"未知主机，请检查主机名或网络连接。",Toast.LENGTH_SHORT).show();
-                } else if (errorMessage.contains("connection reset")) {
-                    Toast.makeText(MainActivity.thisMainActivity,"连接重置，请检查目标主机的SSH服务是否正常。",Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.thisMainActivity,"发生了一个SSH连接错误：" + errorMessage,Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+
         System.out.println("连接失败");
         System.out.println(e.getMessage());
         switch (i) {
             case 1:
                 sftpUtilShowStatus = false;
+                String errorMessage = e.getMessage();
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        assert errorMessage != null;
+                        if (errorMessage.contains("connection timeout")) {
+                            Toast.makeText(MainActivity.thisMainActivity, "连接超时，请检查网络连接或目标主机是否可达。",Toast.LENGTH_SHORT).show();
+                        } else if (errorMessage.contains("Auth fail")) {
+                            Toast.makeText(MainActivity.thisMainActivity,"身份验证失败，请检查用户名和密码。",Toast.LENGTH_SHORT).show();
+                        } else if (errorMessage.contains("refused")) {
+                            Toast.makeText(MainActivity.thisMainActivity,"连接被拒绝，请检查SSH服务是否正常运行。",Toast.LENGTH_SHORT).show();
+                        } else if (errorMessage.contains("UnknownHostException")) {
+                            Toast.makeText(MainActivity.thisMainActivity,"未知主机，请检查主机名或网络连接。",Toast.LENGTH_SHORT).show();
+                        } else if (errorMessage.contains("connection reset")) {
+                            Toast.makeText(MainActivity.thisMainActivity,"连接重置，请检查目标主机的SSH服务是否正常。",Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.thisMainActivity,"发生了一个SSH连接错误：" + errorMessage,Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 break;
             case 2:
                 sftpUtilDownloadStatus = false;
