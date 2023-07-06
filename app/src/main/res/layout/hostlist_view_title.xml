@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/display_title"
-    android:text="设置"
+    android:id="@+id/host_list_title"
+    android:text="@string/host_list_title_text"
     android:textSize="20sp"
     android:gravity="center"
     android:layout_gravity="center"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     >
-
 </TextView>

@@ -9,7 +9,7 @@
         android:id="@+id/setting_TextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SFTPClient 设置"
+        android:text="@string/setting_view_tetle_text"
         android:gravity="center"
         android:textSize="24sp"
         android:textColor="@android:color/black"
@@ -19,7 +19,7 @@
         android:id="@+id/setting_TextViewCharset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="默认字符集"
+        android:text="@string/setting_view_default_charset_text"
         android:textSize="16sp"
         android:textColor="@android:color/black"
         android:layout_marginBottom="8dp" />
@@ -37,7 +37,7 @@
         android:id="@+id/setting_TextViewSaveLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="默认文件保存位置"
+        android:text="@string/setting_view_fileSavePath"
         android:textSize="16sp"
         android:textColor="@android:color/black"
         android:layout_marginBottom="8dp" />
@@ -47,7 +47,7 @@
         android:orientation="horizontal">
 
         <HorizontalScrollView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
             <EditText
@@ -56,7 +56,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:enabled="false"
-                android:hint="请选择文件默认保存位置"
+                android:hint="@string/setting_view_file_save_tips_text"
                 android:padding="8dp"
                 android:textSize="16sp" />
 
@@ -65,14 +65,14 @@
             android:id="@+id/setting_ButtonSelectFolder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="浏览"/>
+            android:text="@string/setting_view_file_show_text"/>
 
     </LinearLayout>
     <Button
         android:id="@+id/setting_ButtonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="保存"
+        android:text="@string/setting_view_save_btn_text"
         android:textSize="16sp"
         />
 

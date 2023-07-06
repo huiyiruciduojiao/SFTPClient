@@ -16,6 +16,7 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
 import top.lichuanjiu.sftpclient.MainActivity;
+import top.lichuanjiu.sftpclient.R;
 import top.lichuanjiu.sftpclient.SftpClient;
 import top.lichuanjiu.sftpclient.View.ViewShowFile;
 import top.lichuanjiu.sftpclient.View.ViewTaskList;
@@ -37,7 +38,7 @@ public class TaskExecutor {
         }
         Thread thread = new Thread(() -> {
             //显示加载图层
-            ViewShowFile.thisViewShowFile.showLoad("删除中");
+            ViewShowFile.thisViewShowFile.showLoad(MainActivity.thisMainActivity.getApplication().getString(R.string.load_view_deleting_text));
             for (TaskConfiguration task : taskGroup.taskConfigurations) {
                 try {
                     //判断是否是文件夹
@@ -64,7 +65,7 @@ public class TaskExecutor {
         }
         Thread thread = new Thread(() -> {
             //显示加载图层
-            ViewShowFile.thisViewShowFile.showLoad("重命名中...");
+            ViewShowFile.thisViewShowFile.showLoad(MainActivity.thisMainActivity.getApplication().getString(R.string.load_view_renaming_text));
             try {
                 SFTPGroup.sftpUtilShow.rename(task.rPwd, task.taskName, task.taskContent);
             } catch (SftpException e) {

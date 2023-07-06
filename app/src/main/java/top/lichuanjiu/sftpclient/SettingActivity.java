@@ -42,7 +42,7 @@ public class SettingActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            actionBar.setCustomView(R.layout.title);//设置标题样式
+            actionBar.setCustomView(R.layout.setting_view_title);//设置标题样式
             actionBar.setHomeButtonEnabled(true);//设置左上角的图标是否可以点击
             actionBar.setDisplayHomeAsUpEnabled(true);//给左上角图标的左边加上一个返回的图标
             actionBar.setDisplayShowCustomEnabled(true);// 使自定义的普通View能在title栏显示，即actionBar.setCustomView能起作用
@@ -92,7 +92,7 @@ public class SettingActivity extends AppCompatActivity {
             // 执行保存操作
             SettingUtils.saveSetting(SettingUtils.getSETTING_KEY()[0], charset);
             SettingUtils.saveSetting(SettingUtils.getSETTING_KEY()[1], saveLocation);
-            Toast.makeText(getApplicationContext(), "保存成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.setting_save_success_tips, Toast.LENGTH_SHORT).show();
             //重新加载配置文件，使配置生效
             loadData();
         });
@@ -103,7 +103,8 @@ public class SettingActivity extends AppCompatActivity {
     private void openFolderPicker() {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        startActivityForResult(Intent.createChooser(intent, "选择文件夹"), REQUEST_CODE_FOLDER_PICKER);
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.setting_select_folder_title_text)),
+                REQUEST_CODE_FOLDER_PICKER);
     }
 
     //处理文件选择器的结果

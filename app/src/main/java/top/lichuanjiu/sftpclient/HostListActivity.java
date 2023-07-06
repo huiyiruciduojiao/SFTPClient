@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
@@ -35,17 +38,36 @@ public class HostListActivity extends AppCompatActivity {
     private QMUIGroupListView groupListView;
     private List<Host> hostList = new ArrayList<>();
     private PopupMenu popupMenu;
+    private final int BACK_BTN = 16908332;
 
     @SuppressLint("Range")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_list);
+
+        //设置顶部菜单栏
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            actionBar.setCustomView(R.layout.setting_view_title);//设置标题样式
+            actionBar.setHomeButtonEnabled(true);//设置左上角的图标是否可以点击
+            actionBar.setDisplayHomeAsUpEnabled(true);//给左上角图标的左边加上一个返回的图标
+            actionBar.setDisplayShowCustomEnabled(true);// 使自定义的普通View能在title栏显示，即actionBar.setCustomView能起作用
+        }
+
         hostListActivity = this;
         initializeData();
 
     }
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        System.out.println(item.getItemId());
+        if (item.getItemId() == BACK_BTN) {//返回按钮被点击
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void initializeData() {
         if (groupListView != null) {
             groupListView.removeAllViews();
@@ -118,6 +140,7 @@ public class HostListActivity extends AppCompatActivity {
      *
      * @param host 主机对象
      */
+    @SuppressLint("SetTextI18n")
     public void showHostDetails(Host host) {
         //显示主机信息框
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(HostListActivity.this);
@@ -160,7 +183,7 @@ public class HostListActivity extends AppCompatActivity {
 
         hostName.setText(host.getName());
         hostAddress.setText(host.getAddress());
-        hostPost.setText(host.getPort());
+        hostPost.setText(host.getPort()+"");
         hostUserName.setText(host.getUserName());
         hostPassword.setText(host.getPassword());
 
@@ -172,6 +195,7 @@ public class HostListActivity extends AppCompatActivity {
      * 修改主机信息
      */
 
+    @SuppressLint("SetTextI18n")
     public void editHost(Host host) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(HostListActivity.this);
@@ -208,7 +232,7 @@ public class HostListActivity extends AppCompatActivity {
 
         hostName.setText(host.getName());
         hostAddress.setText(host.getAddress());
-        hostPost.setText(host.getPort());
+        hostPost.setText(host.getPort()+"");
         hostUserName.setText(host.getUserName());
         hostPassword.setText(host.getPassword());
         characterSet.setSelection(position);

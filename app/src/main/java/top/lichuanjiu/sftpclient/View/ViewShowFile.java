@@ -202,6 +202,7 @@ public class ViewShowFile extends Fragment {
      *
      * @param host 主机对象
      */
+    @SuppressLint("SetTextI18n")
     public void showHostDetails(Host host) {
         //显示主机信息框
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(viewShowFile.getContext());
@@ -244,7 +245,7 @@ public class ViewShowFile extends Fragment {
 
         hostName.setText(host.getName());
         hostAddress.setText(host.getAddress());
-        hostPost.setText(host.getPort());
+        hostPost.setText(host.getPort()+"");
         hostUserName.setText(host.getUserName());
         hostPassword.setText(host.getPassword());
 
@@ -256,6 +257,7 @@ public class ViewShowFile extends Fragment {
      * 修改主机信息
      */
 
+    @SuppressLint("SetTextI18n")
     public void editHost(Host host) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(thisViewShowFile.getContext());
@@ -293,7 +295,7 @@ public class ViewShowFile extends Fragment {
 
         hostName.setText(host.getName());
         hostAddress.setText(host.getAddress());
-        hostPost.setText(host.getPort());
+        hostPost.setText(host.getPort()+"");
         hostUserName.setText(host.getUserName());
         hostPassword.setText(host.getPassword());
         characterSet.setSelection(position);

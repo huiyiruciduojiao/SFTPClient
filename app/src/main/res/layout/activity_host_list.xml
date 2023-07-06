@@ -11,19 +11,19 @@
         android:id="@+id/text_host_list_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="主机列表"
+        android:text="@string/host_list_view_title"
         android:textAlignment="center"
-        android:textSize="30dp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/text_host_list_show_not"
         android:layout_below="@id/text_host_list_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="\n\n 你还没有主机 \n去添加一个吧\n\n\n"
+        android:text="@string/host_list_view_tips_text"
         android:textAlignment="center"
         android:visibility="gone"
-        android:textSize="30dp" />
+        android:textSize="30sp" />
 
     <ScrollView
         android:id="@+id/host_list_scrollView"

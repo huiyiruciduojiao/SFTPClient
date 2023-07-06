@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.viewPager);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(new ViewShowFile(), "文件");
-        pagerAdapter.addFragment(new ViewTaskList(), "任务列表");
+        pagerAdapter.addFragment(new ViewShowFile(), getString(R.string.show_file_view_title));
+        pagerAdapter.addFragment(new ViewTaskList(), getString(R.string.show_taskGroup_view_title));
 
 
         // 将适配器设置给ViewPager
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             //将上传封装成一个任务
             TaskGroup taskGroup = createUpLoadTask(uri);
             new TaskExecutor().implement(taskGroup);
-            Toast.makeText(MainActivity.this, "已添加到任务列表", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, R.string.task_add_success_tips, Toast.LENGTH_SHORT).show();
 
         });
     }
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         } else {
             this.doubleBackToExitPressedOnce = true;
-            Toast.makeText(this, "再次点击即可退出", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.exit_prompt, Toast.LENGTH_SHORT).show();
             new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 1000);
         }
     }
@@ -158,8 +158,11 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         switch (itemId) {
             case R.id.menu_uploadFile:
-                uploadFile();
-                Toast.makeText(this, "点击了文件上传", Toast.LENGTH_SHORT).show();
+                if(SFTPGroup.sftpUtilUpload == null) {
+                    Toast.makeText(this, R.string.no_connect_host_tips,Toast.LENGTH_SHORT).show();
+                }else{
+                    uploadFile();
+                }
                 break;
             case R.id.menu_reLoad:
                 //刷新
@@ -184,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 new TaskExecutor().implement(taskGroup);
                 //恢复默认样式
                 ViewShowFile.thisViewShowFile.reSelectedStyle();
-                Toast.makeText(this, "已添加到任务列表", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.task_add_success_tips, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menu_delete:
                 deleteWarning();
@@ -309,9 +312,8 @@ public class MainActivity extends AppCompatActivity {
             taskGroup.addTask(taskConfiguration);
         }
         if (isSelectFolder) {
-            Toast.makeText(this, "暂不支持下载文件夹，文件夹将不添加到任务列表", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.download_folder_no_tips, Toast.LENGTH_SHORT).show();
         }
-
         return taskGroup;
     }
 
@@ -389,13 +391,13 @@ public class MainActivity extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission
                     .WRITE_EXTERNAL_STORAGE)) {
-                Toast.makeText(this, "请开通相关权限，否则无法正常使用本应用！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.authorization_prompt, Toast.LENGTH_SHORT).show();
             }
             //申请权限
             ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
 
         } else {
-            Toast.makeText(this, "已授权成功！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.authorization_success_tips, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -405,9 +407,9 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_EXTERNAL_STORAGE) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "授权成功！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.authorization_success_tips, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "授权被拒绝！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.authorization_fail_tips, Toast.LENGTH_SHORT).show();
             }
         }
     }
